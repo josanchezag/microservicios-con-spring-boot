@@ -1,11 +1,13 @@
 package com.paymentchain.customer.controller;
 
+import com.paymentchain.customer.entities.Conect;
 import com.paymentchain.customer.entities.Customer;
 import com.paymentchain.customer.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Connection;
 import java.util.List;
 
 @RestController
@@ -43,5 +45,11 @@ public class CustomerRestController {
     public ResponseEntity delete(@PathVariable String id){
         customerRepository.deleteById(Long.parseLong(id));
         return ResponseEntity.ok("Respuesta Ok");
+    }
+
+    @GetMapping("/conection")
+    public Connection get(){
+
+        return Conect.getConnection();
     }
 }
